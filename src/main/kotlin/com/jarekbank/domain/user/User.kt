@@ -15,7 +15,9 @@ data class User(
     var password: String,
     val wallet: MutableMap<String, BigDecimal> = mutableMapOf("PLN" to BigDecimal.ZERO),
     var role: UserRole = UserRole.USER,
+    @JsonIgnore
     val permissions: List<Permission> = listOf(),
+    @JsonIgnore
     val created: Instant = Instant.now(),
 ) {
 
