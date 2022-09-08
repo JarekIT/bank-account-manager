@@ -13,5 +13,6 @@ internal object SignUpUtils {
             surename = signup.surname,
             password = encryptedPassword,
             role = UserRole.USER,
+            wallet = mutableMapOf("PLN" to signup.deposit)
         )
 }
