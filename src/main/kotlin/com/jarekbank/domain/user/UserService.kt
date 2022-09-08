@@ -34,8 +34,8 @@ internal class UserService(
     fun login(pesel: String, password: String): Mono<out Response> =
         findUserByPesel(pesel)
             .map { user ->
-                LoginConfiguration.getAuthToken(user, pesel, applicationContext)
                     ?.let { token -> UserLoginResponse(token) }
+                LoginConfiguration.getAuthToken(user, password, applicationContext)
                     ?: InvalidCredentials() as Response
             }
             .onErrorResume { UnknownLoginProblem(it.message).toMono() }
