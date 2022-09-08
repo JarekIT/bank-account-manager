@@ -38,7 +38,7 @@ internal class UserService(
                     ?.let { token -> UserLoginResponse(token) }
                     ?: InvalidCredentials() as Response
             }
-            .onErrorReturn(InvalidCredentials())
+            .onErrorResume { UnknownLoginProblem(it.message).toMono() }
             .defaultIfEmpty(AccountNotExistsFailureResponse())
 
     private fun createUser(signup: UserSignUpRequest): Mono<User> =

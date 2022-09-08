@@ -8,6 +8,7 @@ class AccountExistsFailureResponse: FailureResponse(1003, "account-exists")
 class AccountNotExistsFailureResponse: FailureResponse(1004, "account-not-exists")
 class NoAuthorization: FailureResponse(1005, "no-authorization")
 class InvalidCredentials: FailureResponse(1006, "invalid-credentials")
+data class UnknownLoginProblem(val message: String?): FailureResponse(1006, "invalid-credentials")
 
 class WalletProblemFailureResponse: FailureResponse(2001, "wallet-problem")
 
